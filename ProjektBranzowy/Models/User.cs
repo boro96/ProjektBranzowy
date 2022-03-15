@@ -13,7 +13,7 @@ namespace ProjektBranzowy.Models
         public string  Email { get; set; }
         public string Group { get; set; }
         public bool IsAdmin { get; set; }
-        public List<int> Access { get; set; }
+        public List<int> Access { get; set; } = new List<int>();
         public string  Password { get; set; }
 
 

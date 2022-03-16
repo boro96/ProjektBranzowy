@@ -15,6 +15,8 @@ namespace ProjektBranzowy.Models
         public bool IsAdmin { get; set; }
         public List<int> Access { get; set; } = new List<int>();
         public string  Password { get; set; }
+        public List<LogHistory> LogsHistory { get; set; }
+
 
 
     }

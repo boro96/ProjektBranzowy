@@ -13,5 +13,18 @@ namespace ProjektBranzowy.DataAccess
        public DbSet<User> People { get; set; }
        public DbSet<Room> Rooms { get; set; }
        public DbSet<LogHistory> LogsHistory{ get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<LogHistory>()
+                .HasOne(a => a.User)
+                .WithMany(b => b.LogsHistory)
+                .HasForeignKey(c => c.UserId);
+
+            modelBuilder.Entity<LogHistory>()
+                .HasOne(a => a.Room)
+                .WithMany(b => b.LogsHistory)
+                .HasForeignKey(c => c.RoomId);
+        }
     }
 }

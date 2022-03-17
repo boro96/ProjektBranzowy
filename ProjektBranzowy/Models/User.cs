@@ -16,6 +16,7 @@ namespace ProjektBranzowy.Models
         public List<int> Access { get; set; } = new List<int>();
         public string  Password { get; set; }
         public List<LogHistory> LogsHistory { get; set; }
+        public List<Schedule> Schedules { get; set; }
 
 
 

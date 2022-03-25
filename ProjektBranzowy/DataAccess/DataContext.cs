@@ -17,6 +17,18 @@ namespace ProjektBranzowy.DataAccess
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            var users = modelBuilder.Entity<User>();
+            users.Property(a => a.Name).HasColumnType("varchar(50)").IsRequired();
+            users.Property(b => b.Surname).HasColumnType("varchar(50)").IsRequired();
+            users.Property(c => c.Email).HasColumnType("varchar(60)").IsRequired();
+            users.Property(di => di.Group).HasColumnType("char(6)");
+            users.Property(m => m.Password).HasColumnType("varchar(30)").IsRequired();
+
+
+            modelBuilder.Entity<Room>()
+                .Property(a => a.Name).HasColumnType("varchar(40)").IsRequired();
+
+
             modelBuilder.Entity<LogHistory>()
                 .HasOne(a => a.User)
                 .WithMany(b => b.LogsHistory)

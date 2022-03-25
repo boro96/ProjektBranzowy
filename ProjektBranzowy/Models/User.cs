@@ -11,9 +11,9 @@ namespace ProjektBranzowy.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string  Email { get; set; }
-        public string Group { get; set; }
+        public string Group { get; set; } 
         public bool IsAdmin { get; set; }
-        public List<int> Access { get; set; } = new List<int>();
+        public List<Room> Rooms { get; set; } = new List<Room>();
         public string  Password { get; set; }
         public List<LogHistory> LogsHistory { get; set; }
         public List<Schedule> Schedules { get; set; }

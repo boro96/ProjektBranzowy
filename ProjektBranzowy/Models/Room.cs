@@ -11,5 +11,6 @@ namespace ProjektBranzowy.Models
         public string  Name { get; set; }
         public List<LogHistory> LogsHistory { get; set; }
         public List<Schedule> Schedules { get; set; }
+        public List<User> Users { get; set; }
     }
 }

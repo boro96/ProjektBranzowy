@@ -14,9 +14,12 @@ namespace ProjektBranzowy.DataAccess
        public DbSet<Room> Rooms { get; set; }
        public DbSet<LogHistory> LogsHistory{ get; set; }
        public DbSet<Schedule> Schedules { get; set; }
+        
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             var users = modelBuilder.Entity<User>();
             users.Property(a => a.Name).HasColumnType("varchar(50)").IsRequired();
             users.Property(b => b.Surname).HasColumnType("varchar(50)").IsRequired();

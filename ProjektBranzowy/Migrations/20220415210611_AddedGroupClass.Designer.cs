@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjektBranzowy.DataAccess;
 
 namespace ProjektBranzowy.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220415210611_AddedGroupClass")]
+    partial class AddedGroupClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,6 +119,9 @@ namespace ProjektBranzowy.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("varchar(60)");
+
+                    b.Property<string>("Group")
+                        .HasColumnType("char(6)");
 
                     b.Property<int>("GroupId")
                         .HasColumnType("int");

@@ -14,18 +14,19 @@ namespace ProjektBranzowy.DataAccess
        public DbSet<Room> Rooms { get; set; }
        public DbSet<LogHistory> LogsHistory{ get; set; }
        public DbSet<Schedule> Schedules { get; set; }
-        
+        public DbSet<Group> Groups { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             var users = modelBuilder.Entity<User>();
             users.Property(a => a.Name).HasColumnType("varchar(50)").IsRequired();
             users.Property(b => b.Surname).HasColumnType("varchar(50)").IsRequired();
             users.Property(c => c.Email).HasColumnType("varchar(60)").IsRequired();
-            users.Property(di => di.Group).HasColumnType("char(6)");
             users.Property(m => m.Password).HasColumnType("varchar(30)").IsRequired();
+
+            modelBuilder.Entity<Group>()
+                .Property(a => a.Name).HasColumnType("varchar(30)").IsRequired();
 
 
             modelBuilder.Entity<Room>()
@@ -51,6 +52,16 @@ namespace ProjektBranzowy.DataAccess
                 .HasOne(a => a.Room)
                 .WithMany(b => b.Schedules)
                 .HasForeignKey(c => c.RoomId);
+
+            modelBuilder.Entity<User>()
+                .HasOne(p => p.Groups)
+                .WithMany(b => b.Users)
+                .HasForeignKey(a => a.GroupId);
+                
+
+            
+                
+                
         }
     }
 }

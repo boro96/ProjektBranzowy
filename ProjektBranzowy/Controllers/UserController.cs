@@ -17,7 +17,7 @@ namespace ProjektBranzowy.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<User> objList = _db.People;
+            IEnumerable<LogHistory> objList = _db.LogsHistory;
             return View(objList);
         }
         public IActionResult Create()

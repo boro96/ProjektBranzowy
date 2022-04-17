@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjektBranzowy.Controllers
 {
@@ -17,7 +18,7 @@ namespace ProjektBranzowy.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<LogHistory> objList = _db.LogsHistory;
+            IEnumerable<LogHistory> objList = _db.LogsHistory.Include(x => x.Room).Include(a => a.User);
             return View(objList);
         }
         public IActionResult Create()

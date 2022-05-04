@@ -26,13 +26,37 @@ namespace ProjektBranzowy.Controllers
            
             return View();
         }
-        [HttpPost]
+
+        public IActionResult Delete()
+        {
+            IEnumerable<User> list = _db.People.ToList<User>();
+            return View(list);
+        }
+
+            [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(User obj)
         {
+            obj.GroupId = 1;
             _db.People.Add(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        
+        
+        
+        [HttpPost]
+        public IActionResult DeleteUsers(IEnumerable<int> id)
+        {
+            IEnumerable<User> list = _db.People.Where(user => id.Contains(user.UserId)).ToList();
+            foreach (User u in list)
+            {
+                _db.People.Remove(u);
+                _db.SaveChanges();
+               
+            }
+            return RedirectToAction("Delete");
+        }
+      
     }
 }

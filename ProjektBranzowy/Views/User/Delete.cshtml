@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProjektBranzowy.Models.User>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Users List</h2>
+        </div>
+        <div class="col-6">
+            Delete users
+        </div>
+    </div>
+    <br />
+
+</div>
+@if (Model.Count() > 0)
+{
+<form method="post" asp-action="DeleteUsers">
+    <table class="table table-dark table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Is Admin</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td><input type="checkbox" name="id" id="id" value="@user.UserId" /></td>
+                    <td>@user.Name</td>
+                    <td>@user.Surname</td>
+                    <td>@user.Email</td>
+                    <td>@user.IsAdmin</td>
+                </tr>
+            }
+        </tbody>
+
+
+
+    </table>
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-primary" />
+    </div>
+
+</form>
+        }
+        else
+        {
+        <p>No Users created yet</p>
+        }

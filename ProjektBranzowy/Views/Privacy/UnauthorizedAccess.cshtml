@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ProjektBranzowy.Models.UnauthorizedAccess>
+
+    <div class="container p-3">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-primary">Unauthorized accesses list</h2>
+            </div>
+            <div class="col-6">
+                Create new Item
+            </div>
+        </div>
+        <br />
+
+    </div>
+@if(Model.Count()>0)
+ {
+               
+                 <table class="table table-dark table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>RoomName</th>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Entry</th>
+                            <th>Exit</th>
+
+                        </tr>
+                              </thead>
+                    <tbody>
+                        @foreach(var logHistory in Model)
+                {
+                    <tr>
+                        <td>@logHistory.Room.Name</td>
+                        <td>@logHistory.User.Name</td>
+                        <td>@logHistory.User.Surname</td>
+                        <td>@logHistory.In</td>
+                        <td>@logHistory.Out</td>
+
+                    </tr>
+                }
+                        </tbody>
+
+
+
+                    </table>
+}
+else
+            {
+                <p>No Unauthorized Accesses</p>
+            }
+
+
+
+      

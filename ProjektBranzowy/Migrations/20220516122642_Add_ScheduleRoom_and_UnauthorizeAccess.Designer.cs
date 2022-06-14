@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjektBranzowy.DataAccess;
 
 namespace ProjektBranzowy.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220516122642_Add_ScheduleRoom_and_UnauthorizeAccess")]
+    partial class Add_ScheduleRoom_and_UnauthorizeAccess
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,32 +107,6 @@ namespace ProjektBranzowy.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Schedules");
-                });
-
-            modelBuilder.Entity("ProjektBranzowy.Models.ScheduleRoom", b =>
-                {
-                    b.Property<int>("ScheduleRoomId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<TimeSpan>("Finish")
-                        .HasColumnType("time");
-
-                    b.Property<int>("RoomId")
-                        .HasColumnType("int");
-
-                    b.Property<TimeSpan>("Start")
-                        .HasColumnType("time");
-
-                    b.Property<int>("WeekDay")
-                        .HasColumnType("int");
-
-                    b.HasKey("ScheduleRoomId");
-
-                    b.HasIndex("RoomId");
-
-                    b.ToTable("ScheduleRooms");
                 });
 
             modelBuilder.Entity("ProjektBranzowy.Models.UnauthorizedAccess", b =>
@@ -248,17 +224,6 @@ namespace ProjektBranzowy.Migrations
                     b.Navigation("Room");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ProjektBranzowy.Models.ScheduleRoom", b =>
-                {
-                    b.HasOne("ProjektBranzowy.Models.Room", "Room")
-                        .WithMany()
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("ProjektBranzowy.Models.UnauthorizedAccess", b =>

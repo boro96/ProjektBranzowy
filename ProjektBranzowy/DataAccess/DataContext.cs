@@ -12,9 +12,11 @@ namespace ProjektBranzowy.DataAccess
        public DataContext(DbContextOptions options) : base(options) { }
        public DbSet<User> People { get; set; }
        public DbSet<Room> Rooms { get; set; }
+       public DbSet<ScheduleRoom> ScheduleRooms { get; set; }
        public DbSet<LogHistory> LogsHistory{ get; set; }
+       public DbSet<UnauthorizedAccess> UnauthorizedAccess { get; set; }
        public DbSet<Schedule> Schedules { get; set; }
-        public DbSet<Group> Groups { get; set; }
+       public DbSet<Group> Groups { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

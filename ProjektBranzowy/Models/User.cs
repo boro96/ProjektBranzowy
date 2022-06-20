@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace ProjektBranzowy.Models
         public List<LogHistory> LogsHistory { get; set; }
         public List<Schedule> Schedules { get; set; }
         public int GroupId { get; set; }
+        [NotMapped]
         public Group Groups { get; set; }
 
 

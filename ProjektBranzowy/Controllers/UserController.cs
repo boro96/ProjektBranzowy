@@ -23,7 +23,8 @@ namespace ProjektBranzowy.Controllers
         }
         public IActionResult Create()
         {
-           
+            var groups = _db.Groups.ToList();
+            ViewBag.GroupType = groups;
             return View();
         }
         [HttpPost]

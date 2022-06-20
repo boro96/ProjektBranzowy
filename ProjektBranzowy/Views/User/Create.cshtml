@@ -28,10 +28,10 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                @* [We dont have group property because i removed it. I created class as group so this part of code must be changed]
-                    <label asp-for="Group" class="control-label"></label>
-                <input asp-for="Group" class="form-control" />
-                <span asp-validation-for="Group" class="text-danger"></span>*@
+                    <label asp-for="GroupId" class="control-label"></label>
+                @Html.DropDownListFor(a => a.Groups.Name, new SelectList(ViewBag.GroupType, "GroupId", "Name"));
+                @*<input asp-for="Group" class="form-control" />*@
+                <span asp-validation-for="GroupId" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
